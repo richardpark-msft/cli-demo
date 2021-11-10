@@ -7,7 +7,6 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/messaging/azservicebus"
 	"github.com/joho/godotenv"
 )
@@ -32,50 +31,31 @@ func main() {
 func sendCommand(args []string) error {
 	fs := flag.NewFlagSet("send", flag.ExitOnError)
 
-	// authentication methods
-	ns := fs.String("ns", "", "Namespace (assumes DefaultAzureCredential)")
-	cs := fs.String("csenv", "SERVICEBUS_CONNECTION_STRING", "Environment variable that contains a connection string")
-	queueOrTopic := fs.String("entity", "", "Entity to send messages to (topic or queue)")
+	envFile := fs.String("env", ".env", ".env file to load before running. Empty string disables .env file loading.")
+	entityPath := fs.String("entity", "", "Entity to send messages to (topic or queue)")
+	auth := AddAuth(fs)
+
 	isBody := fs.Bool("body", true, "Causes the entire contents of stdin to be used as the message Body.")
 
 	_ = fs.Parse(os.Args[2:])
 
-	if *queueOrTopic == "" {
+	if *entityPath == "" {
 		return fmt.Errorf("no queue/topic specified with -entity")
 	}
 
-	_ = godotenv.Load()
-
-	var client *azservicebus.Client
-
-	if *ns != "" {
-		dac, err := azidentity.NewDefaultAzureCredential(nil)
-
-		if err != nil {
-			return err
-		}
-
-		client, err = azservicebus.NewClient(*ns, dac, nil)
-
-		if err != nil {
-			return err
-		}
-	} else {
-		cs := os.Getenv(*cs)
-
-		if cs == "" {
-			return fmt.Errorf("no connection string in environment variable %s", cs)
-		}
-
-		var err error
-		client, err = azservicebus.NewClientFromConnectionString(cs, nil)
-
-		if err != nil {
-			return err
+	if *envFile != "" {
+		if err := godotenv.Load(*envFile); err != nil {
+			return fmt.Errorf("failed to load .env file '%s': %s", *envFile, err.Error())
 		}
 	}
 
-	sender, err := client.NewSender(*queueOrTopic)
+	client, err := auth.NewClient()
+
+	if err != nil {
+		return err
+	}
+
+	sender, err := client.NewSender(*entityPath)
 
 	if err != nil {
 		return err
