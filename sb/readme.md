@@ -28,3 +28,9 @@ Receiving a message using the CLI:
 ```powershell
 .\sb receive demo --env
 ```
+
+Peeking a message using the CLI:
+
+```powershell
+.\sb peek demo --env
+```
