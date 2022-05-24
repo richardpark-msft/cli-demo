@@ -62,7 +62,7 @@ func sendCommand(args *sendArgs) error {
 		return fmt.Errorf("failed to create a Service Bus Sender: %w", err)
 	}
 
-	fmt.Fprintf(os.Stderr, "Reading message from stdin (ctrl+d to send)\n")
+	fmt.Fprintf(os.Stderr, "Enter message contents (ctrl+z to send)\n")
 
 	// read the message in from stdin
 	bytes, err := io.ReadAll(os.Stdin)
@@ -93,7 +93,7 @@ func sendCommand(args *sendArgs) error {
 
 	err = sender.SendMessage(ctx, &azservicebus.Message{
 		Body: bytes,
-	})
+	}, nil)
 
 	if errors.Is(err, context.DeadlineExceeded) {
 		return fmt.Errorf("timed out sending message (timeout duration was %s): %w", args.timeout, err)
