@@ -27,6 +27,7 @@ func FormatMessage(args FormatMessageArgs) ([]byte, error) {
 		formattableMessage["ApplicationProperties"] = args.Message.ApplicationProperties
 	}
 
+	formattableMessage["SequenceNumber"] = args.Message.SequenceNumber
 	formattableMessage["DeliveryCount"] = args.Message.DeliveryCount
 	formattableMessage["EnqueuedTime"] = args.Message.EnqueuedTime
 	formattableMessage["ExpiresAt"] = args.Message.ExpiresAt
