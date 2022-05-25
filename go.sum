@@ -16,6 +16,8 @@ github.com/Azure/azure-sdk-for-go/sdk/messaging/azservicebus v0.3.7-0.2022033001
 github.com/Azure/azure-sdk-for-go/sdk/messaging/azservicebus v0.3.7-0.20220330015836-3aaefa8951b3/go.mod h1:qEHuyZ0NHuPZnuFwYKigzR7B84ueqW4ZFK0gKAPe2SQ=
 github.com/Azure/azure-sdk-for-go/sdk/messaging/azservicebus v1.0.0 h1:f1QV3YOBvF+hI63GVSA7Dgww+iXs5f+3nIzuLvcCx+M=
 github.com/Azure/azure-sdk-for-go/sdk/messaging/azservicebus v1.0.0/go.mod h1:LH9XQnMr2ZYxQdVdCrzLO9mxeDyrDFa6wbSI3x5zCZk=
+github.com/Azure/azure-sdk-for-go/sdk/messaging/azservicebus v1.0.1-0.20220524122807-a9d9b56a8ee8 h1:xrX9YH+CLRzHpx4GTJNPQs75iYFJ/D81s6EOw+qW0I0=
+github.com/Azure/azure-sdk-for-go/sdk/messaging/azservicebus v1.0.1-0.20220524122807-a9d9b56a8ee8/go.mod h1:LH9XQnMr2ZYxQdVdCrzLO9mxeDyrDFa6wbSI3x5zCZk=
 github.com/Azure/azure-sdk-for-go/sdk/messaging/internal v0.1.0 h1:mvQhIGmKI3vmdNDUMG0ZHaZ1p+JcHE3m0q1RMOyKxRo=
 github.com/Azure/azure-sdk-for-go/sdk/messaging/internal v0.1.0/go.mod h1:7hMUlcqiMXDUJtU1EWQlhhkC4BfIr6pEsiyuRYq4xLQ=
 github.com/Azure/azure-sdk-for-go/sdk/messaging/internal v0.1.1 h1:QAW1Y+jk6hk4Xst1n9cGRq9xBrBi/U3rYUcbvmox6lw=

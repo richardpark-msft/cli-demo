@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.0.0
-	github.com/Azure/azure-sdk-for-go/sdk/messaging/azservicebus v1.0.0
+	github.com/Azure/azure-sdk-for-go/sdk/messaging/azservicebus v1.0.1-0.20220524122807-a9d9b56a8ee8
 	github.com/joho/godotenv v1.4.0
 	github.com/spf13/cobra v1.4.0
 	github.com/spf13/pflag v1.0.5

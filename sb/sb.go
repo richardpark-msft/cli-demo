@@ -15,6 +15,7 @@ func main() {
 	rootCmd.AddCommand(newSendCommand())
 	rootCmd.AddCommand(newReceiveCommand())
 	rootCmd.AddCommand(newPeekCommand())
+	rootCmd.AddCommand(newStatsCommand())
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Printf("ERROR: %s", err.Error())
